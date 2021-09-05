@@ -171,6 +171,15 @@ namespace NcnnDotNet
                                                            out IntPtr returnValue);
 
         [DllImport(NativeLibrary, CallingConvention = CallingConvention)]
+        public static extern ErrorType mat_Mat_to_pixels(IntPtr mat, IntPtr pixels,
+                                                   PixelType type);
+
+        [DllImport(NativeLibrary, CallingConvention = CallingConvention)]
+        public static extern ErrorType mat_Mat_to_pixels2(IntPtr mat, IntPtr pixels,
+                                           PixelType type,
+                                           int stride);
+
+        [DllImport(NativeLibrary, CallingConvention = CallingConvention)]
         public static extern ErrorType mat_Mat_from_pixels2(IntPtr pixels,
                                                             PixelType type,
                                                             int w,

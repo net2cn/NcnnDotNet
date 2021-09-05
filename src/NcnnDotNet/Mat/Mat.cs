@@ -409,6 +409,27 @@ namespace NcnnDotNet
 
         #endregion
 
+        #region ToPixels
+        public void ToPixels(IntPtr pixel, PixelType type)
+        {
+            if (pixel == IntPtr.Zero)
+                throw new ArgumentException("Can not pass IntPtr.Zero", nameof(pixel));
+
+            NativeMethods.mat_Mat_to_pixels(this.NativePtr, pixel,
+                                              type);
+        }
+
+        public void ToPixels(IntPtr pixel, PixelType type, int stride)
+        {
+            if (pixel == IntPtr.Zero)
+                throw new ArgumentException("Can not pass IntPtr.Zero", nameof(pixel));
+
+            NativeMethods.mat_Mat_to_pixels2(this.NativePtr, pixel,
+                                              type, stride);
+        }
+        #endregion
+
+
         #region FromPixelsResize
 
         public static Mat FromPixelsResize(IntPtr pixel, PixelType type, int width, int height, int targetWidth, int targetHeight, Allocator allocator = null)
